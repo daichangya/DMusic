@@ -1,0 +1,14 @@
+{
+  "name": "dmusic-desktop",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Electron 桌面壳：加载同级 dmusic 播放器页面，并提供 chrome.runtime / chrome.cookies 兼容层。",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^33.4.1"
+  }
+}

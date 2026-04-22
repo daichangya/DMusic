@@ -1,0 +1,12 @@
+# 各子包通用（子目录内 package.json 另有补充时可叠加）
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/
+*.swp
+*~
+
+node_modules/
+dist/
+out/

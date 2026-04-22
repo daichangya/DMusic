@@ -1,0 +1,12 @@
+{
+  "name": "dmusic-site",
+  "version": "0.1.0",
+  "private": true,
+  "description": "本地静态托管 dmusic-core/，在浏览器中打开 player.html（网站版 MVP）",
+  "scripts": {
+    "dev": "serve ../dmusic-core -l tcp://127.0.0.1:5173 --cors"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}

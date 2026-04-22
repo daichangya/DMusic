@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DMusic 播放器</title>
+  </head>
+  <body>
+    <header>
+      <h1>DMusic</h1>
+      <p class="sub">多数据源搜索与播放（iTunes 预览；网易云等需在开发者模式下加载模块）</p>
+    </header>
+    <main>
+      <div class="source-row">
+        <label for="source">数据源</label>
+        <select id="source" name="source" aria-label="数据源"></select>
+      </div>
+      <form class="search-row" id="search-form" action="#" method="get">
+        <input
+          type="search"
+          id="q"
+          name="q"
+          placeholder="输入歌名或艺人…"
+          autocomplete="off"
+          required
+        />
+        <button type="submit" id="search-btn">搜索</button>
+      </form>
+      <p class="msg" id="msg" aria-live="polite"></p>
+      <ul class="results" id="results"></ul>
+      <div class="player-bar">
+        <div class="now-playing" id="now-playing">未选择曲目</div>
+        <audio id="player" controls preload="none"></audio>
+      </div>
+      <details class="dev-panel" id="dev-panel">
+        <summary>开发者选项（自定义数据源）</summary>
+        <div class="dev-panel-body">
+          <p class="dev-warn">
+            开启后加载的脚本与扩展页面同源执行，可访问扩展已声明的权限与网络域，等同于运行不可信代码；仅用于本地调试，风险自负。关闭「开发者模式」会清除已注册的用户源。
+          </p>
+          <label class="dev-row">
+            <input type="checkbox" id="dev-mode" />
+            <span>开发者模式（允许注册用户脚本源）</span>
+          </label>
+          <div id="dev-tools" class="dev-tools" hidden>
+            <p class="dev-note">
+              MV3 扩展页不允许在 CSP 中使用 <code>blob:</code> 执行脚本，故不能从本页「任意文件 / 粘贴」动态
+              <code>import()</code>。请把模块放进 <code>user-sources/</code>，并在
+              <code>js/player-app.js</code> 的 <code>PACKAGED_USER_SOURCES</code> 中登记路径后，在
+              <strong>dmusic-chrome</strong> 执行 <code>npm run build</code> 并重新加载扩展，再从下栏加载。
+            </p>
+            <div class="dev-row">
+              <label for="user-source-packaged">扩展内用户源模块</label>
+              <select id="user-source-packaged" aria-label="扩展内用户源模块"></select>
+              <button type="button" id="user-source-load-packaged-btn">加载选中模块</button>
+            </div>
+            <div class="dev-row dev-actions">
+              <button type="button" id="user-source-unregister-btn">从列表移除当前自定义源</button>
+            </div>
+          </div>
+        </div>
+      </details>
+    </main>
+    <script type="module" src="/src/player-entry.js"></script>
+  </body>
+</html>

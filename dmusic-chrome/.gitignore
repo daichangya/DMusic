@@ -1,0 +1,8 @@
+dist/
+node_modules/
+# 历史整树同步遗留目录（勿再提交；以 npm run build 为准）
+/js/
+/css/
+/vendor/
+/user-sources/
+/docs/

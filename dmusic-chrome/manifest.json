@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "DMusic（多源搜索播放）",
+  "version": "0.1.0",
+  "description": "精简 Chrome 扩展：iTunes 预览；网易云、酷狗、Bilibili、QQ 音乐等须在开发者模式下加载包内用户源。",
+  "action": {
+    "default_title": "打开 dmusic 播放器"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["cookies", "declarativeNetRequest"],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "dmusic_bilibili_cdn",
+        "enabled": true,
+        "path": "dnr_bilibili_cdn.json"
+      }
+    ]
+  },
+  "host_permissions": [
+    "https://itunes.apple.com/*",
+    "https://*.itunes.apple.com/*",
+    "*://*.apple.com/*",
+    "*://music.163.com/*",
+    "*://*.music.163.com/*",
+    "*://*.xiami.com/*",
+    "*://*.qq.com/*",
+    "*://*.kugou.com/*",
+    "*://*.kuwo.cn/*",
+    "*://*.bilibili.com/*",
+    "*://*.bilivideo.com/*",
+    "*://*.bilivideo.cn/*",
+    "*://*.migu.cn/*",
+    "*://*.taihe.com/*",
+    "*://music.91q.com/*",
+    "*://api.github.com/*",
+    "*://github.com/*",
+    "*://gist.githubusercontent.com/*"
+  ]
+}
