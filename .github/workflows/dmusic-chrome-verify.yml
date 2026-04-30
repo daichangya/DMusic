@@ -1,0 +1,30 @@
+# OpenSpec：chrome-music-extension →「CI 可校验清单文件（无头）」
+# @author dmusic-test
+
+name: dmusic-chrome-verify
+
+on:
+  push:
+    paths:
+      - "dmusic-chrome/**"
+      - "dmusic-core/**"
+      - ".github/workflows/dmusic-chrome-verify.yml"
+  pull_request:
+    paths:
+      - "dmusic-chrome/**"
+      - "dmusic-core/**"
+      - ".github/workflows/dmusic-chrome-verify.yml"
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: dmusic-chrome
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm ci
+      - run: npm test
