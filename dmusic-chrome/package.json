@@ -1,17 +1,13 @@
 {
   "name": "dmusic-chrome",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
-  "description": "DMusic Chrome MV3 扩展根；npm run build 从 dmusic-core 产出 dist/ 供加载已解压",
-  "type": "module",
+  "description": "DMusic Chrome MV3 扩展（从 dmusic-core 同步构建 dist）",
+  "license": "MIT",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "postinstall": "npm run build",
-    "sync": "node scripts/sync-from-core.cjs"
-  },
-  "devDependencies": {
-    "vite": "^6.2.0",
-    "vite-plugin-static-copy": "^2.2.0"
+    "build": "node scripts/build.cjs",
+    "verify:manifest": "node scripts/verify-manifest.mjs",
+    "test": "npm run verify:manifest",
+    "postinstall": "npm run build"
   }
 }

@@ -1,7 +1,14 @@
 /**
- * dmusic-chrome 扩展后台：点击工具栏图标打开播放器页面。
- * @author listen1, dmusic-chrome
+ * MV3 service worker：打开播放器页（由 dmusic-core 同步到 dist）。
+ *
+ * @author dmusic-test
  */
+
+chrome.runtime.onInstalled.addListener(() => {
+  // 预留：安装后引导、目录快照注入等
+});
+
 chrome.action.onClicked.addListener(() => {
-  chrome.tabs.create({ url: chrome.runtime.getURL('player.html') });
+  const url = chrome.runtime.getURL("player.html");
+  chrome.tabs.create({ url });
 });

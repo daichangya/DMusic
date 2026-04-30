@@ -1,5 +1,7 @@
 # DMusic 四包（`dmusic/`）
 
+> **0.2 新一代最小骨架**：`dmusic-core` / `dmusic-chrome` 已按 OpenSpec `dmusic-chrome-musicfree-player` 重建为可构建的 MV3 壳（非旧版 Listen1 大仓恢复）。桌面与站点包可按需后续补回。
+
 原 **dmusic** 单目录已拆分为四包，请改用：
 
 | 用途 | 目录 |
