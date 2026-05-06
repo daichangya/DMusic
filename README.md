@@ -25,5 +25,4 @@
 3. **密钥**：确认 `user-sources`、`manifest`、脚本中无个人 token / 客户端密钥；用户源仅供本地调试时加载。
 4. **子包自检**：`dmusic-desktop`、`dmusic-site` 若单独使用，各自目录下 `npm install` 一次。
 5. **独立仓库**：若只推送本 `dmusic/` 目录为新仓库，请把本目录作为 Git 根（或 `git subtree split`），并在 GitHub 上补充 **About** 描述与 **Topics**（如 `chrome-extension`、`electron`、`music`）。
-6. **iTunes / 网络权限**：扩展须声明 `itunes.apple.com` 等 `host_permissions`；修改 `manifest.json` 后需重新 `npm run build` 并重新加载扩展。
-# dmusic
+6. **iTunes / 网络权限**：若适配器访问 Apple 相关域，须在 `manifest.json` 声明对应 `host_permissions`；修改后需重新 `npm run build` 并重新加载扩展。
