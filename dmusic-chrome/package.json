@@ -7,7 +7,8 @@
   "scripts": {
     "build": "node scripts/build.cjs",
     "verify:manifest": "node scripts/verify-manifest.mjs",
-    "test": "npm run verify:manifest",
+    "verify:sw-boundary": "node scripts/verify-sw-boundary.cjs",
+    "test": "npm run verify:manifest && npm run verify:sw-boundary",
     "postinstall": "npm run build"
   }
 }

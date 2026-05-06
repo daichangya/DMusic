@@ -7,8 +7,10 @@ Chrome Manifest V3 扩展：**`npm install`**（会执行 **`postinstall` → `n
 ```bash
 cd dmusic-chrome
 npm install
-npm run verify:manifest
+npm test
 ```
+
+`npm test` 会依次执行 `verify:manifest` 与 `verify:sw-boundary`（断言 `background.js` 不含音乐 API 直连片段）。
 
 在 Chrome 打开 `chrome://extensions` →「加载已解压的扩展程序」→ 选择本目录下的 **`dist`**。
 
