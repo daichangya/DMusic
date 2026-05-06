@@ -4,7 +4,11 @@
   "version": "0.2.0",
   "description": "DMusic 播放器（新一代最小骨架，OpenSpec dmusic-chrome-musicfree-player）",
   "permissions": ["storage"],
-  "host_permissions": [],
+  "host_permissions": [
+    "https://u.y.qq.com/*",
+    "https://lxmusicapi.onrender.com/*",
+    "https://y.gtimg.cn/*"
+  ],
   "background": {
     "service_worker": "background.js"
   },

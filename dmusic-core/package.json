@@ -6,6 +6,6 @@
   "license": "MIT",
   "scripts": {
     "generate:catalog-snapshot": "node scripts/generate-catalog-snapshot.cjs",
-    "test": "node --test \"test/*.cjs\""
+    "test": "node --test \"test/*.cjs\" \"test/*.mjs\""
   }
 }

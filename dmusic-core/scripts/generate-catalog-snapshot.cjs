@@ -17,11 +17,16 @@ const outPath = path.join(coreRoot, "assets", "plugin-catalog.snapshot.json");
 const raw = fs.readFileSync(sourcePath, "utf8");
 const { catalogVersion, entries } = parseMyPluginsJsonString(raw);
 
+/** MVP：小秋源已在 core 注册适配器，标记为 ready（其余 pending）。 */
+const entriesMarked = entries.map((e) =>
+  e.stableId === "musicfree:xiaoqiu" ? { ...e, adapterStatus: "ready" } : e,
+);
+
 const snapshot = {
   catalogVersion,
   generatedAt: new Date().toISOString(),
   source: path.basename(sourcePath),
-  entries,
+  entries: entriesMarked,
 };
 
 fs.mkdirSync(path.dirname(outPath), { recursive: true });

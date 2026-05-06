@@ -71,3 +71,67 @@ body {
   opacity: 0.5;
   cursor: wait;
 }
+
+.dmusic-h2 {
+  margin: 1.25rem 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+.dmusic-search-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.dmusic-input {
+  flex: 1 1 12rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.25);
+  color: var(--fg);
+}
+
+.dmusic-btn {
+  padding: 0.4rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(124, 156, 255, 0.25);
+  color: var(--fg);
+  cursor: pointer;
+}
+
+.dmusic-btn:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+
+.dmusic-results {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+}
+
+.dmusic-results li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.dmusic-track-title {
+  font-weight: 600;
+}
+
+.dmusic-track-meta {
+  opacity: 0.75;
+  font-size: 0.875rem;
+}
+
+.dmusic-audio {
+  width: 100%;
+  margin-top: 0.75rem;
+}
