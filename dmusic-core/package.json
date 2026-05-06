@@ -3,5 +3,9 @@
   "version": "0.2.0",
   "private": true,
   "description": "DMusic 播放器静态资源与业务逻辑（新一代最小骨架）",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "generate:catalog-snapshot": "node scripts/generate-catalog-snapshot.cjs",
+    "test": "node --test \"test/*.cjs\""
+  }
 }

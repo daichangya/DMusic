@@ -1,0 +1,2 @@
+# 构建时由 scripts/generate-catalog-snapshot.cjs 生成
+assets/plugin-catalog.snapshot.json

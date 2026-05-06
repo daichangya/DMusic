@@ -18,13 +18,14 @@ on:
 jobs:
   verify:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: dmusic-chrome
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - run: npm ci
-      - run: npm test
+      - name: dmusic-core unit tests
+        working-directory: dmusic-core
+        run: npm test
+      - name: dmusic-chrome build + manifest
+        working-directory: dmusic-chrome
+        run: npm ci && npm test

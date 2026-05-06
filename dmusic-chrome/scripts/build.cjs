@@ -6,6 +6,7 @@
 
 const fs = require("fs");
 const path = require("path");
+const { spawnSync } = require("child_process");
 
 const chromeRoot = path.join(__dirname, "..");
 const coreRoot = path.join(chromeRoot, "..", "dmusic-core");
@@ -42,10 +43,19 @@ function copyDir(srcDir, destDir, { skip } = { skip: new Set() }) {
 rmrf(distDir);
 fs.mkdirSync(distDir, { recursive: true });
 
+const genSnap = spawnSync(process.execPath, [path.join(coreRoot, "scripts", "generate-catalog-snapshot.cjs")], {
+  stdio: "inherit",
+  cwd: coreRoot,
+  env: process.env,
+});
+if (genSnap.status !== 0) {
+  throw new Error("generate-catalog-snapshot 失败");
+}
+
 copyFile(path.join(chromeRoot, "manifest.json"), path.join(distDir, "manifest.json"));
 copyFile(path.join(chromeRoot, "background.js"), path.join(distDir, "background.js"));
 
-const coreSkip = new Set(["package.json", "node_modules"]);
+const coreSkip = new Set(["package.json", "node_modules", "scripts", "test"]);
 copyDir(coreRoot, distDir, { skip: coreSkip });
 
 console.log("build.cjs: 已生成", distDir);
