@@ -18,3 +18,9 @@
 - 源清单：`assets/sources/myPlugins.json`（与上游 `keep-alive/Music_Free/myPlugins.json` 对齐，可随版本更新）。
 - 构建：`dmusic-core/scripts/generate-catalog-snapshot.cjs` 生成 `assets/plugin-catalog.snapshot.json`（已加入 `.gitignore`，由 `dmusic-chrome` 的 `npm run build` 在拷贝前调用）。
 - `stableId`：由插件脚本 URL 的文件名派生，形如 `musicfree:xiaoqiu`（见 `scripts/derive-stable-id.cjs`）。
+
+## Storage overlay（Chrome）
+
+- 键名：`dmusic.catalog.overlay`，结构 `{ byStableId: Record<string, { enabled?: boolean }> }`。
+- 合并：`scripts/merge-catalog.cjs`（Node 单测）；构建时写入 `dist/js/plugin-catalog/merge-runtime.js` 供 service worker `importScripts`。
+- 播放器页通过 `chrome.runtime.sendMessage`：`GET_MERGED_CATALOG`、`SET_ENTRY_ENABLED`。

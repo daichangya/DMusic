@@ -58,4 +58,11 @@ copyFile(path.join(chromeRoot, "background.js"), path.join(distDir, "background.
 const coreSkip = new Set(["package.json", "node_modules", "scripts", "test"]);
 copyDir(coreRoot, distDir, { skip: coreSkip });
 
+// 供 service worker importScripts：与 scripts/merge-catalog.cjs 逻辑同源（toString 注入）
+const { mergeSnapshotWithOverlay } = require(path.join(coreRoot, "scripts", "merge-catalog.cjs"));
+const mergeRuntimePath = path.join(distDir, "js", "plugin-catalog", "merge-runtime.js");
+fs.mkdirSync(path.dirname(mergeRuntimePath), { recursive: true });
+const mergeRuntimeBody = `(function(){self.dmusicMergeSnapshotWithOverlay=${mergeSnapshotWithOverlay.toString()};})();`;
+fs.writeFileSync(mergeRuntimePath, mergeRuntimeBody, "utf8");
+
 console.log("build.cjs: 已生成", distDir);
