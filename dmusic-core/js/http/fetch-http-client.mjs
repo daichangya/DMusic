@@ -9,7 +9,14 @@ export class FetchHttpClient {
    * @param {typeof fetch} [fetchImpl]
    */
   constructor(fetchImpl) {
-    const f = fetchImpl ?? globalThis.fetch?.bind(globalThis);
+    const native = globalThis.fetch;
+    /** 显式传入的 bare `globalThis.fetch` 与「未传参」一样，必须 bind，否则后续调用会 Illegal invocation */
+    const f =
+      fetchImpl === undefined || fetchImpl === null
+        ? native?.bind(globalThis)
+        : fetchImpl === native
+          ? native.bind(globalThis)
+          : fetchImpl;
     if (typeof f !== "function") {
       throw new Error("fetch 不可用：请注入 fetchImpl");
     }
